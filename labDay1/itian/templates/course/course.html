@@ -1,5 +1,5 @@
+{% extends 'trainee/listtrainee.html'%}
 {%load static%}
-{% extends "listtrainee.html" %}
 
 
     {% block content %}
@@ -9,7 +9,7 @@
             <th>course ID</th>
             <th>course Name</th>
             <th>course option</th>
-        {% for trainee in trinne %}
+        {% for trainee in courses %}
         <tr>
             <td>{{ trainee.0 }}</td>
             <td>{{ trainee.1 }}</td>   

@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/media/mekhotek/New Volume/ITIFullStackPython/django/labDay1/itian/.venv/bin/python3" "$0" "$@"
+'''exec' "/media/mekhotek/New Volume/ITIFullStackPython/django/labs/labDay1/itian/.venv/bin/python3" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re
