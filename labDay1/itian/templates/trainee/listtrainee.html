@@ -1,0 +1,36 @@
+{%load static%}
+<!DOCTYPE html>
+
+<head>
+    <title>Trainee List</title>
+</head>
+<body>
+    {% block content %}
+    <h1>Trainee List</h1>
+  
+    <table border="1">
+        <tr>
+            <th>Trainee ID</th>
+            <th>Trainee Name</th>
+            <th>Trainee option</th>
+        {% for trainee in trinne %}
+        <tr>
+            <td>{{ trainee.0 }}</td>
+            <td>{{ trainee.1 }}</td>   
+            <td><a href="delete/{{trainee.0}}">Delete</a></td>
+            <td><a href="update/{{trainee.0}}">Update</a></td>  
+        </tr>
+        {% endfor %}
+    </table>
+    <input type="text" id="add" >
+    <button onclick="printValue()">add trainee</button>
+    {% endblock %}
+    <script>
+        function printValue() {
+            var inputValue = document.getElementById("add").value;
+            window.location.href = "add/"+inputValue;
+        }
+    </script>
+
+</body>
+</html>
