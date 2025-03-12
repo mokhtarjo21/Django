@@ -1,0 +1,28 @@
+{% extends 'trainee/listtrainee.html'%}
+{%load static%}
+
+
+    {% block content %}
+    <h1>course List</h1>
+    <table border="1">
+        <tr>
+            <th>course ID</th>
+            <th>course Name</th>
+            <th>course description</th>
+            <td>course price</td>
+            <td>course option</td>
+        {% for trainee in courses %}
+        <tr>
+            <td>{{ trainee.id }}</td>
+            <td>{{ trainee.name }}</td>   
+            <td>{{ trainee.description }}</td>
+            <td>{{ trainee.price }}</td>
+            <td><a href="delete/{{trainee.id}}">Delete</a></td>
+              
+        </tr>
+        {% endfor %}
+    </table>
+    <input type="text" id="add" >
+    <button onclick="printValue()">add trainee</button>
+    {% endblock %}
+   
