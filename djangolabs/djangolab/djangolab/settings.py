@@ -51,7 +51,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'itian.urls'
+ROOT_URLCONF = 'djangolab.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'itian.wsgi.application'
+WSGI_APPLICATION = 'djangolab.wsgi.application'
 
 
 # Database
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'itian.wsgi.application'
 DATABASES = {
       'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mekhotel',
+        'NAME': 'mekhotel1',
         'USER':'postgres',
         'PASSWORD':'123',
         'HOST':'localhost',

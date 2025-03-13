@@ -1,19 +1,23 @@
 from django.shortcuts import render, redirect
 from .models import Trainee
+from .form import Traineeadd
 def index(request):
      return render(request, 'login.html')
 
 def add(request):
-    if request.method == 'POST':
-        Trainee.add_trainee(
-            request.POST['name'],
-            request.POST['email'],
-            request.FILES['image'],
-            request.POST['trak']
-        )
-        return redirect('/trainee')
+    context={'form':Traineeadd()}
+    
+    if(request.method=='POST' ):
+        form=Traineeadd(data=request.POST,files=request.FILES)
+        if(form.is_bound and form.is_valid()):
+            form.save()
+            return redirect('/trainee')
+        else:
+            context['error']=form.errors
+            return render(request, 'trainee/add.html', context)
+            
     else:
-        return render(request, 'trainee/add.html')
+        return render(request, 'trainee/add.html', context)
    
 
 def delete(request,id):
