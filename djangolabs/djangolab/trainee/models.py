@@ -17,12 +17,10 @@ class Trainee(models.Model):
         return cls.objects.get(id=id)
     @staticmethod
     def add_trainee(name,email,image,trak):
-        return Trainee.objects.create(name=name,email=email,image=image,trak=trak)
+        return Trainee.objects.create(name=name,email=email,image=image,trak=Course.get_course_by_id(trak))
     @classmethod
     def update_trainee(cls,id,name,email,image,trak):
-        return cls.objects.filter(id=id).update(name=name,email=email,
-        # image=image,
-        trak=trak)
+        return cls.objects.filter(id=id).update(name=name,email=email,trak=trak)
     @classmethod
     def get_trainee_by_active(cls):
         return cls.objects.filter(isactive=True)

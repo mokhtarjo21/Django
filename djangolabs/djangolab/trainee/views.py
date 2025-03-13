@@ -11,13 +11,12 @@ def add(request):
         form=Traineeadd(data=request.POST,files=request.FILES)
         if(form.is_bound and form.is_valid()):
             form.save()
+            
             return redirect('/trainee')
         else:
             context['error']=form.errors
             return render(request, 'trainee/add.html', context)
-            
-    else:
-        return render(request, 'trainee/add.html', context)
+    return render(request, 'trainee/add.html', context)
    
 
 def delete(request,id):
