@@ -1,11 +1,11 @@
 from django.urls import path
-from . import views
-
+from .views import *
+from django.views import View
 
 urlpatterns = [
  
-    path('add/', views.add ,name= 'add'),
-    path('delete/<int:id>', views.delete ,name= 'delete'),
-    path('update/<int:id>', views.update ,name= 'update'),
-    path('', views.listt ,name= 'listt'),
+    path('add/', add.as_view() ,name= 'add'),
+    path('delete/<int:id>', delete.as_view() ,name= 'delete'),
+    path('update/<int:id>', update.as_view()  ,name= 'update'),
+    path('', listt.as_view()  ,name= 'listt'),
 ]
