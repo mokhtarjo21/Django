@@ -14,6 +14,7 @@
             <th>Trainee Name</th>
             <th>Trainee Email</th>
             <th>Trainee Image</th>
+            <th>Trainee Track</th>
             <th>Actions</th>
         </tr>
         {% for trainee in trainees %}
@@ -22,6 +23,7 @@
             <td>{{trainee.name}}</td>
             <td>{{trainee.email}}</td>
             <td><img src="{{trainee.image.url}}" alt="image" width="100" height="100"></td>
+            <td>{{trainee.trak}}</td>
             <td>
                 <a href="update/{{trainee.id}}">update</a>
                 <a href="delete/{{trainee.id}}">Delete</a>

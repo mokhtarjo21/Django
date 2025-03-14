@@ -23,7 +23,19 @@
                 <label for="image">Image:</label>
                 <input type="file" class="form-control-file" id="image"  name="image" accept="image/*" required>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+
+
+  
+  
+    <label for="id_trak">Track:</label>
+    <select name="trak" required="" id="id_trak">
+  <option value="" selected="">{{obj.trak}}</option>
+        {% for track in  courses %}
+  <option value="{{track.id}}">{{track.name}}</option>
+{% endfor %}
+        </select>
+
+    <button type="submit" class="btn btn-primary">update</button>
         </form>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

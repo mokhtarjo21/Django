@@ -20,7 +20,7 @@ class Trainee(models.Model):
         return Trainee.objects.create(name=name,email=email,image=image,trak=Course.get_course_by_id(trak))
     @classmethod
     def update_trainee(cls,id,name,email,image,trak):
-        return cls.objects.filter(id=id).update(name=name,email=email,trak=trak)
+        return cls.objects.filter(id=id).update(name=name,email=email,trak=Course.get_course_by_id(trak))
     @classmethod
     def get_trainee_by_active(cls):
         return cls.objects.filter(isactive=True)

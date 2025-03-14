@@ -1,6 +1,11 @@
 from django.shortcuts import render, redirect
+from curses.textpad import Textbox
+from django import forms
+from django.forms import TextInput
+from course.models import Course
 from .models import Trainee
 from .form import Traineeadd
+import os
 def index(request):
      return render(request, 'login.html')
 
@@ -24,17 +29,25 @@ def delete(request,id):
     
 
 def update(request,id):
-    if request.method == 'POST':
-        Trainee.update_trainee(
-            id,
-            request.POST['name'],
-            request.POST['email'],
-            # request.FILES['image'],
-            request.POST['trak']
-        )
-        return redirect('/trainee')
+    obj=Trainee.get_trainee_by_id(id)
+
+    course=Course.get_all_course()
+    context={'obj':obj,'courses':course}
+    if(request.method=='POST'):
+        if obj.image:
+            old_image_path ='media/trainee/'+str(obj.image)
+            print(os.path.exists(old_image_path))
+            if os.path.exists(old_image_path):
+                os.remove(old_image_path)
+                print('removed')
+        obj.image=request.FILES['image']
+        obj.name=request.POST['name']
+        obj.email=request.POST['email']
+        obj.trak=Course.get_course_by_id(request.POST['trak'])
+        obj.save()
+        return  redirect('/trainee')
     else:
-        context={'obj':Trainee.objects.get(id=id)}
+
         return render(request, 'trainee/update.html', context)
 
 def listt(request): 
