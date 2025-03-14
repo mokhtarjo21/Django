@@ -9,8 +9,7 @@ class Course(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-    def __str__(self):
-        return self.name
+    
     
     @classmethod
     def get_all_course(cls):
@@ -22,7 +21,8 @@ class Course(models.Model):
     def add_course(name,description,price):
         return Course.objects.create(name=name,description=description,price=price)
     @classmethod
-    def update_course(cls,id,name,email,image,trak):
+    def update_course(cls,id,name,description,price):
         return cls.objects.filter(id=id).update(name=name,description=description,price=price)
    
-
+    def __str__(self):
+        return self.name

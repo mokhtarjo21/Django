@@ -17,12 +17,13 @@
             <td>{{ trainee.name }}</td>   
             <td>{{ trainee.description }}</td>
             <td>{{ trainee.price }}</td>
-            <td><a href="delete/{{trainee.id}}">Delete</a></td>
+            <td><a href="delete/{{trainee.id}}">Delete</a>
+            <a href="update/{{trainee.id}}">Update</a>
+            </td>
               
         </tr>
         {% endfor %}
     </table>
-    <input type="text" id="add" >
-    <button onclick="printValue()">add trainee</button>
+    <a href="/course/add">Add course</a>
     {% endblock %}
    

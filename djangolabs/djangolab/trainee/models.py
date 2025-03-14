@@ -6,7 +6,7 @@ class Trainee(models.Model):
     email = models.EmailField()
     image = models.ImageField(upload_to='trainee/images/')
     isactive=models.BooleanField(default=True)
-    trak=models.ForeignKey(to=Course,on_delete=models.CASCADE)
+    trak=models.ForeignKey(Course,on_delete=models.CASCADE)
     def __str__(self):
         return self.name
     @classmethod
@@ -24,4 +24,3 @@ class Trainee(models.Model):
     @classmethod
     def get_trainee_by_active(cls):
         return cls.objects.filter(isactive=True)
-

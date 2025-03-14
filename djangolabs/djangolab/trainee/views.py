@@ -11,7 +11,6 @@ def add(request):
         form=Traineeadd(data=request.POST,files=request.FILES)
         if(form.is_bound and form.is_valid()):
             form.save()
-            
             return redirect('/trainee')
         else:
             context['error']=form.errors

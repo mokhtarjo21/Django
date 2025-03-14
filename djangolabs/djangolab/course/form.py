@@ -8,3 +8,4 @@ class courseaddmodel(forms.ModelForm):
         model=Course
         fields='__all__'
         exclude=['id','created_at ','updated_at']
+        
