@@ -13,32 +13,38 @@ from django.conf import settings
 from django.views.generic import UpdateView,DeleteView
 from django.views import View
 
+
+from django.contrib.auth import authenticate,login,logout
+from django.contrib.auth.models import User
+
 class add(View):
-    @login_required
+    
+    
     def get(self,request):
-        context={'form':Traineeadd()}
+        context={'form':Traineeadd(),'user':request.user}
+        
         return render(request, 'trainee/add.html', context)
-    @login_required
+    
     def post(self,request):
         form=Traineeadd(data=request.POST,files=request.FILES)
         if(form.is_bound and form.is_valid()):
             form.save()
             return redirect('/trainee')
         else:
-            context['error']=form.errors
+            context = {'form': form, 'error': form.errors,'user':request.user}
             return render(request, 'trainee/add.html', context)
 
 class delete(DeleteView):
     def get(self,request,id):
         Trainee.objects.filter(id=id).update(isactive=False)
         return redirect('/trainee')
-  
+
 class update(UpdateView):
     def get(self,request,id):
         obj=Trainee.get_trainee_by_id(id)
 
         course=Course.get_all_course()
-        context={'obj':obj,'courses':course}
+        context={'obj':obj,'courses':course,'user':request.user}
         return render(request, 'trainee/update.html', context)
     def post(self,request,id):
         obj=Trainee.get_trainee_by_id(id)
@@ -54,14 +60,14 @@ class update(UpdateView):
         obj.trak=Course.get_course_by_id(request.POST['trak'])
         obj.save()
         return  redirect('/trainee')
+
 class listt(View):
-    def get(self,request):
-        context={}
+    def get(self, request):
+        context={'user':request.user}
         context['trainees']=Trainee.objects.filter(isactive=True)
         return render(request, 'trainee/listtrainee.html', context)    
-def index(request):
-     return render(request, 'login.html')
 
+# @login_required()
 # def add(request):
 #     context={'form':Traineeadd()}
     

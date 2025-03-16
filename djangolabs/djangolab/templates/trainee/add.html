@@ -8,6 +8,8 @@
 </head>
 <body>
     <div class="container mt-5">
+        <p>User : {{user}}</p>
+        <a href="/logout">Logout</a>
         <h1 class="mb-4">Add Trainee</h1>
         <form method="post" enctype="multipart/form-data">
             {%csrf_token%}
