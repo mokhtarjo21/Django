@@ -21,7 +21,7 @@ class TraineeList_add(APIView):
             return Response(serlizer.data, status=status.HTTP_201_CREATED)
         return Response(serlizer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-class trainee_update_delete(generics.RetrieveAPIView):
+class trainee_update_delete(generics.RetrieveUpdateDestroyAPIView):
     queryset = Trainee.get_trainee_by_active()
     serializer_class = T_serlizer
     

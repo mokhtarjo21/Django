@@ -1,12 +1,15 @@
 from django.urls import path, include
 from course.api.views import *
+from rest_framework.routers import DefaultRouter
+from .views import CourseViewSet
 
-from rest_framework import routers
 
+router = DefaultRouter()
+router.register(r'', CourseViewSet)
 
 
 urlpatterns=[
     
   path('update/<int:id>', update ,name='update'),
-  #path('',TraineeList_add.as_view(),name='trainee_list'),
+  path('', include(router.urls)),
 ]
