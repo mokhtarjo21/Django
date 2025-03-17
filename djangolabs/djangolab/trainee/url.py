@@ -1,4 +1,4 @@
-from django.urls import path
+from django.urls import path , include
 from .views import *
 from django.views import View
 from django.contrib.auth.decorators import login_required
@@ -11,4 +11,5 @@ urlpatterns = [
     path('add/', login_required(add.as_view()),name= 'add'),
     path('delete/<int:id>', login_required(delete.as_view()) ,name= 'delete'),
     path('update/<int:id>', login_required(update.as_view()) ,name= 'update'),
+    path('api/',include('trainee.api.url')),
 ]
